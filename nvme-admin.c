@@ -1054,7 +1054,7 @@ static uint16_t nvme_fdp_events(FemuCtrl *n, NvmeCmd *cmd, uint32_t endgrpid,
     // 5. 이벤트 리스트 복사 (Flattening)
     event = (NvmeFdpEvent *)(elog + 1);
 
-    for (unsigned int i = 0; i < NVME_FDP_MAX_EVENTS; i++) {
+    for (unsigned int i = 0; i < ebuf->nelems; i++) {
         // femu_log("nvme_fdp_events i: %d\n", i);
         unsigned int idx = (ebuf->start + i) % NVME_FDP_MAX_EVENTS;
         event[i] = ebuf->events[idx];
